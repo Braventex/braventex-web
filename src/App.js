@@ -6,6 +6,7 @@ import Portfolio from './components/Portfolio';
 import AboutTeam from './components/AboutTeam';
 import Testimonials from './components/Testimonials';
 import ContactForm from './components/ContactForm';
+import Footer from './components/Footer';
 import GlobalStyles from './styles/GlobalStyles';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'slick-carousel/slick/slick.css';
@@ -22,6 +23,7 @@ function App() {
       <AboutTeam />
       <Testimonials />
       <ContactForm />
+      <Footer />
     </>
   );
 }
