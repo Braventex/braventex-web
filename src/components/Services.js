@@ -8,9 +8,10 @@ const ServicesSection = styled.section`
 
 const ServiceGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
 `;
+
 
 const ServiceCard = styled.div`
   background: white;
@@ -66,25 +67,25 @@ const Services = () => {
       id: 1,
       icon: <FaGlobe />,
       title: "Web Development",
-      description: "Modern, responsive websites and web applications built with cutting-edge technologies. We create engaging, user-friendly digital experiences that help businesses establish strong online presence and connect with their audience effectively."
+      description: "We design responsive, high-performance websites and web applications using modern frameworks."
     },
     {
       id: 2,
       icon: <FaMobile />,
       title: "Android App Development",
-      description: "Native and cross-platform mobile applications designed for exceptional user experience. Our mobile solutions combine intuitive interfaces with robust functionality, ensuring your app stands out in the competitive digital marketplace."
+      description: "Our team crafts intuitive, scalable Android apps that delight users and meet business objectives."
     },
     {
       id: 3,
       icon: <FaRobot />,
       title: "AI/ML Solutions",
-      description: "Custom artificial intelligence and machine learning applications that solve complex problems and automate processes. We help businesses harness the power of data and intelligent algorithms to make informed decisions and gain competitive advantage."
+      description: "From predictive models to data-driven insights, we leverage AI/ML to automate workflows and uncover opportunities."
     },
     {
       id: 4,
       icon: <FaLaptopCode />,
       title: "Product & Software Development",
-      description: "End-to-end product development services from ideation to deployment. We transform concepts into market-ready solutions, focusing on quality, performance, and user experience to deliver software products that meet real-world needs."
+      description: "End-to-end development of software products—from concept and architecture to deployment and support. "
     }
   ];
 

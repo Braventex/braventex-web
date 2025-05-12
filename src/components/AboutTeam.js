@@ -7,57 +7,80 @@ const TeamSection = styled.section`
 `;
 
 const TeamGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1000px;
+  margin: 0 auto;
 `;
+
 
 const TeamCard = styled.div`
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  background: transparent;
+  text-align: center;
   transition: all 0.3s ease;
-  
-  &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    
-    .profile-img img {
-      transform: scale(1.05);
-    }
-  }
 `;
 
+
 const ProfileImage = styled.div`
-  height: 300px;
+  width: 180px;
+  height: 180px;
+  margin: 0 auto;
+  border-radius: 50%;
   overflow: hidden;
-  
+  position: relative;
+
+  &:hover img {
+    opacity: 0.2;
+  }
+
+  &:hover .social-overlay {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
   img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: all 0.5s ease;
+    border-radius: 50%;
+    transition: all 0.4s ease;
   }
 `;
 
+
+const SocialOverlay = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.4s ease;
+  z-index: 2;
+`;
+
+
 const TeamMemberInfo = styled.div`
-  padding: 20px;
-  text-align: center;
+  margin-top: 15px;
 `;
 
 const MemberName = styled.h3`
-  font-size: 1.3rem;
+  font-size: 1.1rem;
+  color: var(--dark);
   margin-bottom: 5px;
-  color: var(--secondary-dark);
 `;
 
 const MemberRole = styled.p`
-  color: var(--primary);
   font-size: 0.9rem;
-  margin-bottom: 10px;
+  color: var(--primary);
   font-weight: 500;
 `;
+
 
 const MemberSkills = styled.p`
   color: #666;
@@ -65,29 +88,25 @@ const MemberSkills = styled.p`
   margin-bottom: 15px;
 `;
 
-const SocialLinks = styled.div`
+const SocialLink = styled.a`
+  width: 34px;
+  height: 34px;
+  background-color: var(--primary);
+  color: white;
+  border-radius: 50%;
   display: flex;
+  align-items: center;
   justify-content: center;
-  gap: 15px;
-  
-  a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    background-color: #f4f4f4;
-    color: #333;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    
-    &:hover {
-      background-color: var(--primary);
-      color: white;
-    }
+  font-size: 14px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: var(--primary-dark);
   }
 `;
+
+
+
 
 const AboutTeam = () => {
   const teamMembers = [
@@ -189,22 +208,15 @@ const AboutTeam = () => {
             <TeamCard key={member.id}>
               <ProfileImage className="profile-img">
                 <img src={member.image} alt={member.name} />
+                <SocialOverlay className="social-overlay">
+                  <SocialLink href={member.social.linkedin}><FaLinkedin /></SocialLink>
+                  <SocialLink href={member.social.github}><FaGithub /></SocialLink>
+                  <SocialLink href={member.social.twitter}><FaTwitter /></SocialLink>
+                </SocialOverlay>
               </ProfileImage>
               <TeamMemberInfo>
                 <MemberName>{member.name}</MemberName>
                 <MemberRole>{member.role}</MemberRole>
-                <MemberSkills>{member.skills}</MemberSkills>
-                <SocialLinks>
-                  <a href={member.social.linkedin} target="_blank" rel="noopener noreferrer">
-                    <FaLinkedin />
-                  </a>
-                  <a href={member.social.github} target="_blank" rel="noopener noreferrer">
-                    <FaGithub />
-                  </a>
-                  <a href={member.social.twitter} target="_blank" rel="noopener noreferrer">
-                    <FaTwitter />
-                  </a>
-                </SocialLinks>
               </TeamMemberInfo>
             </TeamCard>
           ))}

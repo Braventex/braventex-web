@@ -18,7 +18,10 @@ const AboutContainer = styled.div`
 const ImageContainer = styled.div`
   flex: 1;
   position: relative;
-  
+  min-height: 500px; /* ensures it stretches like the text section */
+  display: flex;
+  align-items: center;
+
   &:before {
     content: '';
     position: absolute;
@@ -30,21 +33,32 @@ const ImageContainer = styled.div`
     z-index: -1;
     border-radius: 10px;
   }
-  
+
   img {
     width: 100%;
+    height: 30rem;
+    object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   }
+
+  @media (max-width: 992px) {
+    min-height: auto;
+
+    img {
+      height: auto;
+    }
+  }
 `;
+
 
 const Content = styled.div`
   flex: 1;
 `;
 
 const SectionSubTitle = styled.h4`
-  color: var(--primary);
-  font-size: 1.2rem;
+  color: var(--primary-dark);
+  font-size: 3rem;
   margin-bottom: 15px;
   font-weight: 600;
 `;
@@ -73,7 +87,7 @@ const AboutCompany = () => {
           
           <Content>
             <SectionSubTitle>ABOUT US</SectionSubTitle>
-            <AboutTitle>Our Journey & Vision</AboutTitle>
+            {/* <AboutTitle>Our Journey & Vision</AboutTitle> */}
             <AboutText>
               At Braventex, our journey began with a shared belief in <strong>“brave ventures for technology,”</strong> united by a passion to build tools that empower communities. 
             </AboutText>
