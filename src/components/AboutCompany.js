@@ -75,16 +75,19 @@ const AboutCompany = () => {
             <SectionSubTitle>ABOUT US</SectionSubTitle>
             <AboutTitle>Our Journey & Vision</AboutTitle>
             <AboutText>
-              Braventex was founded by seven friends — Devansh, Atharva, Vinayak, Bhagyesh, Shreyas, Jayshree and Tanishka — after a post-exam café conversation about escaping the corporate loop. Instead of settling for repetitive jobs, they chose to <strong>bravely venture into technology</strong> with a mission to build impactful digital solutions.
+              At Braventex, our journey began with a shared belief in <strong>“brave ventures for technology,”</strong> united by a passion to build tools that empower communities. 
             </AboutText>
             <AboutText>
-              Our name "Braventex" represents our core identity: <em>Brave Venture for Technology</em>. We started with a simple but powerful vision — to build real, impactful tech solutions that solve real-world problems.
+              Founded by seven friends—engineers, designers, and strategists—we combine diverse expertise to tackle complex challenges with clarity and creativity.
             </AboutText>
             <AboutText>
-              We're committed to bridging the digital divide, starting with rural communities, while continuously learning and growing through real-world client work. We operate with discipline, accountability, and professional tools — just like any established tech company.
+              We blend <strong>bravery, ventures, and technology</strong>—three pillars that define not only our name but also our purpose.
             </AboutText>
             <AboutText>
-              Today, we're proud to be on our journey of building meaningful digital solutions that make a difference, bringing technical expertise and creative approaches to every project we undertake.
+              From crafting intuitive websites for local governance bodies to offering scalable tech solutions for startups and enterprises, we bring creativity, agility, and reliability to every project we touch.
+            </AboutText>
+            <AboutText>
+              Our vision is to become a trusted and forward-thinking technology partner, empowering businesses of all sizes through modern, efficient, and custom-built digital solutions.
             </AboutText>
           </Content>
         </AboutContainer>
