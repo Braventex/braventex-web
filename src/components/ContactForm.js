@@ -183,7 +183,7 @@ const ContactForm = () => {
               </IconBox>
               <InfoContent>
                 <InfoTitle>Our Location</InfoTitle>
-                <InfoText>Pune, Maharashtra, India</InfoText>
+                <InfoText>Nashik, Maharashtra, India</InfoText>
               </InfoContent>
             </ContactInfoItem>
             
