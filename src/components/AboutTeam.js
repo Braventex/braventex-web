@@ -175,7 +175,7 @@ const AboutTeam = () => {
       image:"/Atharva_Photo.png",
       social: {
         linkedin: "https://www.linkedin.com/in/atharva-deo-b21b4a290/",
-        github: "#",
+        github: "https://github.com/AtharvaDeo0603",
         twitter: "#",
       },
     },
