@@ -1,6 +1,12 @@
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope, FaClock } from 'react-icons/fa';
+import React, { useState } from "react";
+import styled from "styled-components";
+import {
+  FaMapMarkerAlt,
+  FaPhoneAlt,
+  FaEnvelope,
+  FaClock,
+} from "react-icons/fa";
+import emailjs from "emailjs-com";
 
 const ContactSection = styled.section`
   background-color: #f9f9f9;
@@ -10,7 +16,7 @@ const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
-  
+
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
   }
@@ -67,7 +73,7 @@ const FormTitle = styled.h3`
 
 const FormGroup = styled.div`
   margin-bottom: 20px;
-  
+
   label {
     display: block;
     margin-bottom: 8px;
@@ -84,7 +90,7 @@ const FormInput = styled.input`
   border-radius: 5px;
   font-size: 1rem;
   transition: all 0.3s ease;
-  
+
   &:focus {
     outline: none;
     border-color: var(--primary-light);
@@ -100,7 +106,7 @@ const FormTextarea = styled.textarea`
   font-size: 1rem;
   min-height: 150px;
   transition: all 0.3s ease;
-  
+
   &:focus {
     outline: none;
     border-color: var(--primary-light);
@@ -117,11 +123,11 @@ const SubmitButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background-color: var(--primary-dark);
   }
-  
+
   &:disabled {
     background-color: #aaa;
     cursor: not-allowed;
@@ -130,42 +136,56 @@ const SubmitButton = styled.button`
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: ''
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitMessage, setSubmitMessage] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prevState => ({
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
+      [name]: value,
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setSubmitMessage('Thank you for your message! We will get back to you soon.');
-      setFormData({
-        name: '',
-        email: '',
-        subject: '',
-        message: ''
+
+    const serviceID = "service_n9pln6l";
+    const templateID = "template_4b1zbk1";
+    const userID = "d2OBJL59yxsgwHR0S";
+
+    const templateParams = {
+      from_name: formData.name,
+      from_email: formData.email,
+      subject: formData.subject,
+      message: formData.message,
+      to_email: "vinayak@braventex.com", // Optional if already fixed in template
+    };
+
+    emailjs
+      .send(serviceID, templateID, templateParams, userID)
+      .then(() => {
+        setIsSubmitting(false);
+        setSubmitMessage(
+          "Thank you for your message! We will get back to you soon."
+        );
+        setFormData({ name: "", email: "", subject: "", message: "" });
+
+        setTimeout(() => {
+          setSubmitMessage(null);
+        }, 5000);
+      })
+      .catch((error) => {
+        console.error("Email sending failed:", error);
+        setIsSubmitting(false);
+        setSubmitMessage("Something went wrong. Please try again later.");
       });
-      
-      // Clear success message after 5 seconds
-      setTimeout(() => {
-        setSubmitMessage(null);
-      }, 5000);
-    }, 1500);
   };
 
   return (
@@ -174,7 +194,7 @@ const ContactForm = () => {
         <div className="section-title">
           <h2>Get In Touch</h2>
         </div>
-        
+
         <ContactContainer>
           <ContactInfo>
             <ContactInfoItem>
@@ -186,7 +206,7 @@ const ContactForm = () => {
                 <InfoText>Nashik, Maharashtra, India</InfoText>
               </InfoContent>
             </ContactInfoItem>
-            
+
             <ContactInfoItem>
               <IconBox>
                 <FaPhoneAlt />
@@ -196,7 +216,7 @@ const ContactForm = () => {
                 <InfoText>+91 98765 43210</InfoText>
               </InfoContent>
             </ContactInfoItem>
-            
+
             <ContactInfoItem>
               <IconBox>
                 <FaEnvelope />
@@ -206,7 +226,7 @@ const ContactForm = () => {
                 <InfoText>info@braventex.com</InfoText>
               </InfoContent>
             </ContactInfoItem>
-            
+
             <ContactInfoItem>
               <IconBox>
                 <FaClock />
@@ -217,63 +237,65 @@ const ContactForm = () => {
               </InfoContent>
             </ContactInfoItem>
           </ContactInfo>
-          
+
           <FormContainer>
             <FormTitle>Send us a message</FormTitle>
             <form onSubmit={handleSubmit}>
               <FormGroup>
                 <label htmlFor="name">Your Name</label>
-                <FormInput 
-                  type="text" 
-                  id="name" 
-                  name="name" 
+                <FormInput
+                  type="text"
+                  id="name"
+                  name="name"
                   value={formData.name}
                   onChange={handleChange}
-                  required 
+                  required
                 />
               </FormGroup>
-              
+
               <FormGroup>
                 <label htmlFor="email">Your Email</label>
-                <FormInput 
-                  type="email" 
-                  id="email" 
-                  name="email" 
+                <FormInput
+                  type="email"
+                  id="email"
+                  name="email"
                   value={formData.email}
                   onChange={handleChange}
-                  required 
+                  required
                 />
               </FormGroup>
-              
+
               <FormGroup>
                 <label htmlFor="subject">Subject</label>
-                <FormInput 
-                  type="text" 
-                  id="subject" 
-                  name="subject" 
+                <FormInput
+                  type="text"
+                  id="subject"
+                  name="subject"
                   value={formData.subject}
                   onChange={handleChange}
-                  required 
+                  required
                 />
               </FormGroup>
-              
+
               <FormGroup>
                 <label htmlFor="message">Your Message</label>
-                <FormTextarea 
-                  id="message" 
-                  name="message" 
+                <FormTextarea
+                  id="message"
+                  name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  required 
+                  required
                 />
               </FormGroup>
-              
+
               <SubmitButton type="submit" disabled={isSubmitting}>
-                {isSubmitting ? 'Sending...' : 'Send Message'}
+                {isSubmitting ? "Sending..." : "Send Message"}
               </SubmitButton>
-              
+
               {submitMessage && (
-                <p style={{ marginTop: '20px', color: 'green' }}>{submitMessage}</p>
+                <p style={{ marginTop: "20px", color: "green" }}>
+                  {submitMessage}
+                </p>
               )}
             </form>
           </FormContainer>
