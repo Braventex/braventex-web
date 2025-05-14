@@ -99,6 +99,8 @@ const ProjectDescription = styled.p`
   line-height: 1.6;
 `;
 
+
+
 const Portfolio = () => {
   const settings = {
     dots: true,

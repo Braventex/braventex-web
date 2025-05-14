@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { FaLinkedin, FaGithub, FaTwitter } from 'react-icons/fa';
+import React from "react";
+import styled from "styled-components";
+import { FaLinkedin, FaGithub, FaTwitter } from "react-icons/fa";
 
 const TeamSection = styled.section`
   background-color: #f9f9f9;
@@ -15,13 +15,11 @@ const TeamGrid = styled.div`
   margin: 0 auto;
 `;
 
-
 const TeamCard = styled.div`
   background: transparent;
   text-align: center;
   transition: all 0.3s ease;
 `;
-
 
 const ProfileImage = styled.div`
   width: 180px;
@@ -49,7 +47,6 @@ const ProfileImage = styled.div`
   }
 `;
 
-
 const SocialOverlay = styled.div`
   position: absolute;
   top: 50%;
@@ -63,7 +60,6 @@ const SocialOverlay = styled.div`
   transition: all 0.4s ease;
   z-index: 2;
 `;
-
 
 const TeamMemberInfo = styled.div`
   margin-top: 15px;
@@ -80,7 +76,6 @@ const MemberRole = styled.p`
   color: var(--primary);
   font-weight: 500;
 `;
-
 
 const MemberSkills = styled.p`
   color: #666;
@@ -105,8 +100,46 @@ const SocialLink = styled.a`
   }
 `;
 
+// Mobile Responsive Styles
+const MobileResponsiveStyles = styled.div`
+  @media (max-width: 768px) {
+    ${TeamGrid} {
+      flex-direction: column;
+      align-items: center;
+      gap: 30px;
+      padding: 0 20px;
+    }
 
+    ${TeamCard} {
+      width: 100%;
+      max-width: 300px;
+    }
 
+    ${ProfileImage} {
+      width: 140px;
+      height: 140px;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    ${MemberName} {
+      font-size: 1rem;
+    }
+
+    ${MemberRole}, ${MemberSkills} {
+      font-size: 0.85rem;
+    }
+
+    ${SocialLink} {
+      width: 30px;
+      height: 30px;
+      font-size: 12px;
+    }
+  }
+`;
 
 const AboutTeam = () => {
   const teamMembers = [
@@ -115,114 +148,122 @@ const AboutTeam = () => {
       name: "Devansh",
       role: "Tech Lead & Backend Architect",
       skills: "Backend systems, architecture, code reviews, Management",
-      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image: "/Devansh_Photo.png",
       social: {
-        linkedin: "#",
-        github: "#",
-        twitter: "#"
-      }
+        linkedin: "https://www.linkedin.com/in/devanshdubey1",
+        github: "https://github.com/Devansh0012",
+        twitter: "https://x.com/Big_Odev",
+      },
     },
     {
       id: 2,
       name: "Tanishka",
       role: "UI/UX Designer & Frontend Lead",
       skills: "Wireframes, Figma, responsive frontend",
-      image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image: "/Tanishka_Photo.png",
       social: {
-        linkedin: "#",
-        github: "#",
-        twitter: "#"
-      }
+        linkedin: "https://www.linkedin.com/in/tanishka-borse-88a150257",
+        github: "https://github.com/Borsetanishka2003",
+        twitter: "https://x.com/tanishkaborse02?t=6cq2QKdYwVj0gHgnPCAF4g&s=31",
+      },
     },
     {
       id: 3,
       name: "Atharva",
       role: "DevOps & Automation Lead",
       skills: "CI/CD, deployments, Docker, infrastructure",
-      image: "https://images.unsplash.com/photo-1566492031773-4f4e44671857?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image:"/Atharva_Photo.png",
       social: {
-        linkedin: "#",
+        linkedin: "https://www.linkedin.com/in/atharva-deo-b21b4a290/",
         github: "#",
-        twitter: "#"
-      }
+        twitter: "#",
+      },
     },
     {
       id: 4,
       name: "Vinayak",
       role: "Full-Stack Developer & .NET Specialist",
       skills: "Web development, APIs, databases",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image: "/Vinayak_Photo.png",
       social: {
-        linkedin: "#",
-        github: "#",
-        twitter: "#"
-      }
+        linkedin: "https://www.linkedin.com/in/vinayak-gangrade-6361a022a/",
+        github: "https://github.com/vinayak2103",
+        twitter: "https://x.com/GangradeVinayak",
+      },
     },
     {
       id: 5,
       name: "Shreyas",
       role: "Project Manager & Client Liaison",
       skills: "Clients, proposals, scheduling",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image: "/Shreyas_Photo.png",
       social: {
-        linkedin: "#",
-        github: "#",
-        twitter: "#"
-      }
+        linkedin: "https://www.linkedin.com/in/shreyas-bidwai-750351200",
+        github: "https://github.com/ShreyasBidwai",
+        twitter: "#",
+      },
     },
     {
       id: 6,
       name: "Bhagyesh",
       role: "Business Strategist & Marketing Lead",
       skills: "Strategy, outreach, branding",
-      image: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image: "/Bhagyesh_Photo.png",
       social: {
-        linkedin: "#",
-        github: "#",
-        twitter: "#"
-      }
+        linkedin: "https://www.linkedin.com/in/bhagyesh-gangurde-11ba16247",
+        github: "https://github.com/Bhagyesh9",
+        twitter: "https://x.com/Bhagyeshhh9?t=4Qp9mDIhTZIgXENeYhVxVg&s=09",
+      },
     },
     {
       id: 7,
       name: "Jayshree",
       role: "Android App Development Lead",
       skills: "App Development, Optimization",
-      image: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=80",
+      image:"/Jayshree_Photo.png",
       social: {
-        linkedin: "#",
-        github: "#",
-        twitter: "#"
-      }
-    }
+        linkedin: "https://www.linkedin.com/in/jayshree-pangavhane-11b164204",
+        github: "https://github.com/Jayshree2003",
+        twitter: "#",
+      },
+    },
   ];
 
   return (
-    <TeamSection id="team">
-      <div className="container">
-        <div className="section-title">
-          <h2>Our Team</h2>
+    <MobileResponsiveStyles>
+      <TeamSection id="team">
+        <div className="container">
+          <div className="section-title">
+            <h2>Our Team</h2>
+          </div>
+
+          <TeamGrid>
+            {teamMembers.map((member) => (
+              <TeamCard key={member.id}>
+                <ProfileImage className="profile-img">
+                  <img src={member.image} alt={member.name} />
+                  <SocialOverlay className="social-overlay">
+                    <SocialLink href={member.social.linkedin}>
+                      <FaLinkedin />
+                    </SocialLink>
+                    <SocialLink href={member.social.github}>
+                      <FaGithub />
+                    </SocialLink>
+                    <SocialLink href={member.social.twitter}>
+                      <FaTwitter />
+                    </SocialLink>
+                  </SocialOverlay>
+                </ProfileImage>
+                <TeamMemberInfo>
+                  <MemberName>{member.name}</MemberName>
+                  <MemberRole>{member.role}</MemberRole>
+                </TeamMemberInfo>
+              </TeamCard>
+            ))}
+          </TeamGrid>
         </div>
-        
-        <TeamGrid>
-          {teamMembers.map(member => (
-            <TeamCard key={member.id}>
-              <ProfileImage className="profile-img">
-                <img src={member.image} alt={member.name} />
-                <SocialOverlay className="social-overlay">
-                  <SocialLink href={member.social.linkedin}><FaLinkedin /></SocialLink>
-                  <SocialLink href={member.social.github}><FaGithub /></SocialLink>
-                  <SocialLink href={member.social.twitter}><FaTwitter /></SocialLink>
-                </SocialOverlay>
-              </ProfileImage>
-              <TeamMemberInfo>
-                <MemberName>{member.name}</MemberName>
-                <MemberRole>{member.role}</MemberRole>
-              </TeamMemberInfo>
-            </TeamCard>
-          ))}
-        </TeamGrid>
-      </div>
-    </TeamSection>
+      </TeamSection>
+    </MobileResponsiveStyles>
   );
 };
 

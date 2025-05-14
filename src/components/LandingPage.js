@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-scroll';
-import WebFont from 'webfontloader';
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { Link } from "react-scroll";
+import WebFont from "webfontloader";
 
 const LandingSection = styled.section`
   height: 100vh;
@@ -9,7 +9,7 @@ const LandingSection = styled.section`
   align-items: center;
   justify-content: center;
   text-align: center;
-  background: url('/background.jpg');
+  background: url("/background.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -65,10 +65,58 @@ const ScrollButton = styled.button`
   font-size: 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  
+
   &:hover {
     background-color: var(--primary-light);
     transform: translateY(-3px);
+  }
+`;
+
+const ResponsiveStyles = styled.div`
+  @media (max-width: 768px) {
+    ${CompanyName} {
+      font-size: 2.5rem;
+      margin-top: -60px;
+    }
+
+    ${Logo} img {
+      max-width: 250px;
+    }
+
+    ${Tagline} {
+      font-size: 1.2rem;
+      margin: 10px 0 20px;
+      text-align: center;
+    }
+
+    ${ScrollButton} {
+      padding: 10px 25px;
+      font-size: 0.9rem;
+    }
+
+    ${LandingContent} {
+      padding: 0 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    ${CompanyName} {
+      font-size: 2rem;
+      margin-top: -50px;
+    }
+
+    ${Logo} img {
+      max-width: 180px;
+    }
+
+    ${Tagline} {
+      font-size: 1rem;
+    }
+
+    ${ScrollButton} {
+      padding: 10px 20px;
+      font-size: 0.85rem;
+    }
   }
 `;
 
@@ -76,25 +124,27 @@ const LandingPage = () => {
   useEffect(() => {
     WebFont.load({
       google: {
-        families: ['Nunito Sans:700,900']
-      }
+        families: ["Nunito Sans:700,900"],
+      },
     });
   }, []);
 
   return (
     <LandingSection id="home">
-      <LandingContent className="container">
-        <BrandContainer>
-          <Logo>
-            <img src="/logo.svg" alt="Braventex Logo" />
-          </Logo>
-          <CompanyName>Braventex</CompanyName>
-        </BrandContainer>
-        <Tagline>Think. Plan. Build.</Tagline>
-        <Link to="about" smooth={true} duration={500}>
-          <ScrollButton>Discover More</ScrollButton>
-        </Link>
-      </LandingContent>
+      <ResponsiveStyles>
+        <LandingContent className="container">
+          <BrandContainer>
+            <Logo>
+              <img src="/logo.svg" alt="Braventex Logo" />
+            </Logo>
+            <CompanyName>Braventex</CompanyName>
+          </BrandContainer>
+          <Tagline>Think. Plan. Build.</Tagline>
+          <Link to="about" smooth={true} duration={500}>
+            <ScrollButton>Discover More</ScrollButton>
+          </Link>
+        </LandingContent>
+      </ResponsiveStyles>
     </LandingSection>
   );
 };
