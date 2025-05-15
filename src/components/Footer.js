@@ -87,7 +87,7 @@ const Footer = () => {
           <FooterColumn>
             <FooterTitle>Contact Info</FooterTitle>
             <ContactInfo>Email: info@braventex.com</ContactInfo>
-            <ContactInfo>Phone: +91 98765 43210</ContactInfo>
+            <ContactInfo>Phone: +91 78220 36730</ContactInfo>
             <ContactInfo>Nashik, Maharashtra, India</ContactInfo>
           </FooterColumn>
         </FooterContent>

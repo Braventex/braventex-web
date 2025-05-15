@@ -10,19 +10,29 @@ import emailjs from "emailjs-com";
 
 const ContactSection = styled.section`
   background-color: #f9f9f9;
+  padding: 60px 0 100px;
+  position: relative;
 `;
+
 
 const ContactContainer = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 50px;
+  align-items: center;
 
   @media (max-width: 992px) {
     grid-template-columns: 1fr;
+    align-items: start;
   }
 `;
 
-const ContactInfo = styled.div``;
+const ContactInfo = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+`;
 
 const ContactInfoItem = styled.div`
   display: flex;
@@ -72,60 +82,66 @@ const FormTitle = styled.h3`
 `;
 
 const FormGroup = styled.div`
-  margin-bottom: 20px;
+  margin-bottom: 25px;
 
   label {
     display: block;
-    margin-bottom: 8px;
-    font-weight: 500;
-    color: #555;
-    font-size: 0.9rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #444;
+    font-size: 1rem;
   }
 `;
 
+
 const FormInput = styled.input`
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 18px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
+  background-color: #fdfdfd;
   transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: var(--primary-light);
-    box-shadow: 0 0 0 2px rgba(0, 166, 251, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 166, 251, 0.15);
   }
 `;
 
 const FormTextarea = styled.textarea`
   width: 100%;
-  padding: 12px 15px;
+  padding: 14px 18px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
   min-height: 150px;
+  background-color: #fdfdfd;
   transition: all 0.3s ease;
 
   &:focus {
     outline: none;
     border-color: var(--primary-light);
-    box-shadow: 0 0 0 2px rgba(0, 166, 251, 0.2);
+    box-shadow: 0 0 0 3px rgba(0, 166, 251, 0.15);
   }
 `;
+
 
 const SubmitButton = styled.button`
   background-color: var(--primary);
   color: white;
-  padding: 12px 30px;
+  padding: 14px 35px;
   border: none;
-  border-radius: 5px;
+  border-radius: 8px;
   font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
 
   &:hover {
     background-color: var(--primary-dark);
+    transform: translateY(-2px);
   }
 
   &:disabled {
@@ -133,6 +149,12 @@ const SubmitButton = styled.button`
     cursor: not-allowed;
   }
 `;
+
+const SectionTitle = styled.div`
+  margin-bottom: 50px;
+  margin-top: -20px;
+`;
+
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
@@ -156,16 +178,16 @@ const ContactForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    const serviceID = "service_n9pln6l";
-    const templateID = "template_4b1zbk1";
-    const userID = "d2OBJL59yxsgwHR0S";
+    const serviceID = "service_99688dz";
+    const templateID = "template_9b0f7gf";
+    const userID = "ARPEhJdTZafkJeyAu";
 
     const templateParams = {
       from_name: formData.name,
       from_email: formData.email,
       subject: formData.subject,
       message: formData.message,
-      to_email: "vinayak@braventex.com", // Optional if already fixed in template
+      to_email: "info@braventex.com", // Optional if already fixed in template
     };
 
     emailjs
@@ -191,9 +213,9 @@ const ContactForm = () => {
   return (
     <ContactSection id="contact">
       <div className="container">
-        <div className="section-title">
+        <SectionTitle className="section-title">
           <h2>Get In Touch</h2>
-        </div>
+        </SectionTitle>
 
         <ContactContainer>
           <ContactInfo>
@@ -213,7 +235,7 @@ const ContactForm = () => {
               </IconBox>
               <InfoContent>
                 <InfoTitle>Call Us</InfoTitle>
-                <InfoText>+91 98765 43210</InfoText>
+                <InfoText>+91 78220 36730</InfoText>
               </InfoContent>
             </ContactInfoItem>
 
