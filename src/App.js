@@ -1,4 +1,5 @@
 import React from 'react';
+import Navbar from './components/Navbar';
 import LandingPage from './components/LandingPage';
 import AboutCompany from './components/AboutCompany';
 import Services from './components/Services';
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
       <GlobalStyles />
+      <Navbar />
       <LandingPage />
       <AboutCompany />
       <Services />
