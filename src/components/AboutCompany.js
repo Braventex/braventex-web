@@ -42,7 +42,7 @@ const ImageContainer = styled.div`
     width: 100%;
     height: 30rem;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 30px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
   }
 
@@ -62,7 +62,7 @@ const Content = styled.div`
 const SectionSubTitle = styled.h4`
   color: var(--primary-dark);
   font-size: 3rem;
-  margin-bottom: 15px;
+  margin-bottom: 65px;
   font-weight: 600;
 `;
 
@@ -84,6 +84,7 @@ const ResponsiveWrapper = styled.div`
     ${SectionSubTitle} {
       font-size: 2rem;
       text-align: center;
+      margin-bottom: 35px;
     }
 
     ${AboutText} {
@@ -132,16 +133,14 @@ const AboutCompany = () => {
     <AboutSection id="about">
       <ResponsiveWrapper>
         <div className="container">
+          <SectionSubTitle className="section-title">ABOUT US</SectionSubTitle>
           <AboutContainer>
             <ImageContainer>
-              <img
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=600&q=80"
-                alt="About Braventex"
-              />
+              <img src="/AboutCompany.png" alt="About Braventex"/>
             </ImageContainer>
 
             <Content>
-              <SectionSubTitle>ABOUT US</SectionSubTitle>
+              {/* <SectionSubTitle>ABOUT US</SectionSubTitle> */}
               <AboutText>
                 At Braventex, our journey began with a shared belief in{" "}
                 <strong>“brave ventures for technology,”</strong> united by a

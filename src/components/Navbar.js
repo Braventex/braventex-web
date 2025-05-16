@@ -1,11 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { Link, animateScroll as scroll } from 'react-scroll';
-import { FaBars, FaTimes } from 'react-icons/fa';
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import { Link, animateScroll as scroll } from "react-scroll";
+import { FaBars, FaTimes } from "react-icons/fa";
 
 const NavbarContainer = styled.nav`
   position: fixed;
-  top: ${({ show }) => (show ? '0' : '-90px')};
+  top: ${({ show }) => (show ? "0" : "-90px")};
   left: 0;
   width: 100%;
   z-index: 999;
@@ -29,12 +29,12 @@ const Logo = styled.div`
   font-size: 1.8rem;
   font-weight: 800;
   color: #003865;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
-  margin-left: -20px;
+  margin-left: -100px;
 
   @media (max-width: 768px) {
-    margin-left: 0;
+    margin-left: -10px;
   }
 `;
 
@@ -42,13 +42,15 @@ const NavLinks = styled.ul`
   display: flex;
   align-items: center;
   list-style: none;
-  gap: 40px;
+  gap: 50px;
+  margin-right: -50px;
+  text-align: center;
 
   @media (max-width: 768px) {
     position: fixed;
     top: 80px;
-    right: ${({ open }) => (open ? '0' : '-100%')};
-    width: 200px;
+    right: ${({ open }) => (open ? "0" : "-100%")};
+    width: 280px;
     height: calc(100vh - 80px);
     background: white;
     flex-direction: column;
@@ -64,29 +66,46 @@ const NavLinks = styled.ul`
 const NavItem = styled.li``;
 
 const NavLinkStyled = styled(Link)`
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 1.15rem;
+  font-weight: 600;
   color: var(--dark);
   cursor: pointer;
   position: relative;
-  padding-bottom: 5px;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease;
   text-decoration: none;
+  padding-bottom: 5px;
+  text-align: center;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary-dark);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  &:hover {
+    color: var(--primary-dark);
+    transform: scale(1.05);
+  }
+
+  &:hover::after {
+    width: 100%;
+  }
 
   &.active {
     color: var(--primary-dark);
   }
 
   &.active::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -5px;
     width: 100%;
-    height: 2px;
-    background: var(--primary-dark);
   }
 `;
+
 
 const MobileIcon = styled.div`
   display: none;
@@ -102,7 +121,7 @@ const MobileIcon = styled.div`
 const Navbar = () => {
   const [open, setOpen] = useState(false);
   const [showNavbar, setShowNavbar] = useState(true);
-  const [currentSection, setCurrentSection] = useState('home');
+  const [currentSection, setCurrentSection] = useState("home");
   const hideTimeout = useRef(null);
 
   const toggleMobileMenu = () => setOpen(!open);
@@ -120,16 +139,16 @@ const Navbar = () => {
 
       if (hideTimeout.current) clearTimeout(hideTimeout.current);
 
-      if (currentSection !== 'home') {
+      if (currentSection !== "home") {
         hideTimeout.current = setTimeout(() => {
           setShowNavbar(false);
         }, 2500);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
       if (hideTimeout.current) clearTimeout(hideTimeout.current);
     };
   }, [currentSection]);
@@ -138,7 +157,7 @@ const Navbar = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
             const sectionId = entry.target.id;
             setCurrentSection(sectionId);
@@ -147,13 +166,21 @@ const Navbar = () => {
       },
       {
         root: null,
-        rootMargin: '0px',
+        rootMargin: "0px",
         threshold: 0.6,
       }
     );
 
-    const sectionIds = ['home', 'about', 'services', 'portfolio', 'blog', 'team', 'contact'];
-    sectionIds.forEach(id => {
+    const sectionIds = [
+      "home",
+      "about",
+      "services",
+      "portfolio",
+      "blog",
+      "team",
+      "contact",
+    ];
+    sectionIds.forEach((id) => {
       const section = document.getElementById(id);
       if (section) observer.observe(section);
     });
@@ -162,13 +189,13 @@ const Navbar = () => {
   }, []);
 
   const navItems = [
-    { to: 'home', label: 'Home' },
-    { to: 'about', label: 'About' },
-    { to: 'services', label: 'Services' },
-    { to: 'portfolio', label: 'Portfolio' },
-    { to: 'blog', label: 'Blog' },
-    { to: 'team', label: 'Team' },
-    { to: 'contact', label: 'Contact Us' },
+    { to: "home", label: "Home" },
+    { to: "about", label: "About" },
+    { to: "services", label: "Services" },
+    { to: "portfolio", label: "Portfolio" },
+    { to: "blog", label: "Blog" },
+    { to: "team", label: "Team" },
+    { to: "contact", label: "Contact Us" },
   ];
 
   return (
