@@ -21,6 +21,18 @@ const StyledSlider = styled(Slider)`
     display: flex;
     height: 100%;
   }
+
+  @media (max-width: 768px) {
+    .slick-slide {
+      opacity: 1 !important;
+      transform: scale(1) !important;
+    }
+
+    .slick-center {
+      transform: scale(1) !important;
+      opacity: 1 !important;
+    }
+  }
 `;
 
 
